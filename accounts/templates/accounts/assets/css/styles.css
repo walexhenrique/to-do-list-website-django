@@ -19,6 +19,7 @@ html {
     --color-white: #fff;
     --color-black: #000;
     --color-background: #EEEEEE;
+    --color-update: #FEE3EC;
 }
 
 
@@ -167,14 +168,22 @@ footer {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid var(--color-background);
     border-collapse: collapse;
+}
+
+th, td{
+    background: var(--other-color);
 }
 
 .tasks {
     padding: 2rem;
+    color: var(--color-white);
     overflow: hidden;
+    
 }
+
+
 
 .public-tasks {
     width: 100%;
@@ -182,6 +191,13 @@ table, th, td {
     text-align: center;
     padding: 1rem 2rem;
     overflow: hidden;
+    box-shadow: .2rem .2rem 1.5rem var(--color-secondary);
+    transform: scale(1);
+    transition: all 300ms ease-in-out;
+}
+
+.public-tasks:hover {
+    transform: scale(1.01);
 }
 
 .perfil-user {
@@ -200,4 +216,54 @@ table, th, td {
 
 .public-tasks a:hover {
     background: var(--color-secondary);
+}
+
+
+/* dashboard.html */
+
+.update-task.perfil-user a {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    transition: all 300ms ease-in-out;
+}
+
+.update-task.perfil-user a:hover {
+    color: var(--color-white);
+    background: var(--color-black);
+}
+
+.delete-task.perfil-user a {
+    color: var(--color-white);
+    background: var(--color-black);
+    transition: all 300ms ease-in-out;
+}
+
+.delete-task.perfil-user a:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    transition: all 300ms ease-in-out;
+}
+
+.header-title-dashboard {
+    background: none;
+    font-size: 3rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-title-dashboard a{
+    text-decoration: none;
+    display: block;
+    background: #76b665;
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    box-shadow: .5rem .5rem var(--color-black);
+    transition: all 300ms ease-in-out;
+}
+
+.header-title-dashboard a:hover {
+    background: #447a38;
+    box-shadow: .5rem .5rem var(--color-primary);
 }
