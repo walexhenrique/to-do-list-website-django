@@ -11,20 +11,20 @@ html {
 }
 
 :root {
-    --color-pink: #e2adf2;
-    --color-purple-secondary: #4C3575;
-    --color-purple: #371B58;
-    --color-blue: #222a68;
+    --color-red: #FF0000;
+    --color-secondary: #252525;
+    --color-primary: #414141;
+    --color-red-dark: #AF0404;
     --other-color: #5B4B8A; 
     --color-white: #fff;
     --color-black: #000;
-    --color-background: rgb(224, 224, 224);
+    --color-background: #EEEEEE;
 }
 
 
 
 header {
-    background: var(--color-black);
+    background: var(--color-red);
 }
 
 .container {
@@ -61,12 +61,12 @@ header {
 }
 
 .content-ul .li-item a:hover {
-    color: var(--color-pink);
+    color: var(--color-black);
 }
 
 /* footer */
 footer {
-    background: var(--color-black);
+    background: var(--color-red);
     font-size: 1.3rem;
 }
 
@@ -78,10 +78,10 @@ footer {
 
 .footer-content a {
     text-decoration: none;
-    color: var(--color-blue);   
+    color: var(--color-black);   
 }
 .footer-content a:hover {
-    color: var(--color-pink);
+    color: var(--color-secondary);
 }
 
 
@@ -101,6 +101,7 @@ footer {
     width: 50%;
     overflow: hidden;
     height: 100%;
+    margin: 0 2rem;
 }
 
 .img-content img {
@@ -111,17 +112,17 @@ footer {
 .form-content {
     font-size: 2rem;
     text-align: center;
-    background: var(--color-purple-secondary);
+    background: var(--color-secondary);
     padding: 2rem;
     border-radius: 1rem;
     margin: 0 2rem;
     width: 50%;
-    box-shadow: .4rem .4rem 5rem var(--color-black);
+    box-shadow: .4rem .4rem 2rem var(--color-black);
 }
 
 .form-content h2 {
     font-size: 4rem;
-    color: var(--color-black)
+    color: var(--color-red)
 }
 
 .form-content .inputs {
@@ -133,6 +134,7 @@ footer {
     display: block;
     margin: 1rem 0;
     color: var(--color-white);
+    cursor: pointer;
 }
 
 .form-content .inputs input {
@@ -153,5 +155,49 @@ footer {
 }
 
 .form-content .inputs button:hover {
-    background: var(--color-pink)
+    background: var(--color-red);
+    cursor: pointer;
+}
+
+/* index */
+.header-title {
+    background: none;
+    font-size: 3rem;
+    padding: 2rem;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tasks {
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.public-tasks {
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 2rem;
+    overflow: hidden;
+}
+
+.perfil-user {
+    padding: 2rem;
+}
+
+.public-tasks a {
+    text-decoration: none;
+    display: block;
+    padding: 1rem .5rem;
+    border-radius: 1rem;
+    background: var(--color-black);
+    color: var(--color-red-dark);
+    transition: all 300ms ease-in-out;
+}
+
+.public-tasks a:hover {
+    background: var(--color-secondary);
 }
