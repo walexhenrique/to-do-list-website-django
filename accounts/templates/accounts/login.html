@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logar</title>
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="{% static 'accounts/css/styles.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,15 +40,16 @@
         <div class="container">
             <div class="form-container">
                 <div class="img-content">
-                    <img src="./assets/img/to_do.svg" alt="To do list">
+                    <img src="{% static 'accounts/img/to_do.svg'%}" alt="To do list">
                 </div>
                 <div class="form-content">
                     <h2>LOGIN</h2>
-                    <form action="." method="post">
+                    <form action="{% url 'accounts:login_auth_view' %}" method="post">
+                        {% csrf_token %}
                         {% for field in form %}
                         <div class="inputs">
-                            <label for="username">USERNAME</label>
-                            <input type="text" name="username" id="username">
+                            <label for="{{field.id_for_label}}">{{field.label}}</label>
+                            {{field}}
                         </div>
                         {% endfor %}
                         <div class="inputs">

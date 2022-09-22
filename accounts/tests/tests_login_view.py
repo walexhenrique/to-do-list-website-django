@@ -1,7 +1,7 @@
-from multiprocessing import context
 
 from accounts import views
 from accounts.forms.login_form import LoginForm
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import resolve, reverse
 
@@ -32,3 +32,17 @@ class LoginViewTest(TestCase):
         response = self.client.get(url)
 
         self.assertIn('form', response.context)
+
+    def test_view_login_checks_if_authentication_works(self):
+        url = reverse('accounts:login_auth_view')
+        User.objects.create_user(username='jumento', password='jumento2.0')
+        response = self.client.post(url, data={'username':'jumento', 'password': 'jumento2.0'}, follow=True)
+        self.assertRedirects(response, '/accounts/login/')
+
+    def test_view_login_returns_404_if_request_method_is_not_POST(self):
+        url = reverse('accounts:login_auth_view')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+    
+
+        
