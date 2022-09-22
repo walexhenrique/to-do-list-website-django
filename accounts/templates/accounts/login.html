@@ -43,14 +43,12 @@
                 <div class="form-content">
                     <h2>LOGIN</h2>
                     <form action="." method="post">
+                        {% for field in form %}
                         <div class="inputs">
                             <label for="username">USERNAME</label>
                             <input type="text" name="username" id="username">
                         </div>
-                        <div class="inputs">
-                            <label for="password">SENHA</label>
-                            <input type="password" name="password" id="password">
-                        </div>
+                        {% endfor %}
                         <div class="inputs">
                             <button type="submit">LOGAR</button>
                         </div>

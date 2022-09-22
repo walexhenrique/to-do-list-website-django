@@ -1,6 +1,9 @@
-from django.shortcuts import HttpResponse, render
+from django.shortcuts import render
+
+from accounts.forms.login_form import LoginForm
 
 
 # Create your views here.
-def login(request):
-    return render(request, 'accounts/login.html')
+def login_view(request):
+    form = LoginForm()
+    return render(request, 'accounts/login.html', {'form':form})

@@ -9,5 +9,5 @@ class AccountsURLsTest(TestCase):
         This test verifies that the path points to the correct location
         """
         
-        url = reverse('accounts:login')
+        url = reverse('accounts:login_view')
         self.assertEqual(url, '/accounts/login/')
