@@ -17,7 +17,7 @@ class LogoutViewTest(TestCase):
         self.client.login(username='joaquim', password='batata123')
 
         response = self.client.get(url)
-        url_redirect = reverse('accounts:login_view_auth')
+        url_redirect = reverse('accounts:login_view')
         self.assertRedirects(response, url_redirect)
                 
         
