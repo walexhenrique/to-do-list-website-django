@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
+from django.urls import reverse
 
 from accounts.forms.login_form import LoginForm
 
@@ -23,10 +24,11 @@ def login_auth_view(request):
 
     if user:
         login(request, user)
-        return redirect('accounts:login_view')
+        return redirect(reverse('accounts:login_view'))
 
     
-    return HttpResponse('asad')
+    return HttpResponse('not logged')
 
 def logout_view(request):
     logout(request)
+    return redirect(reverse('accounts:login_view'))
