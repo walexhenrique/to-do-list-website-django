@@ -18,3 +18,7 @@ class AccountsURLsTest(TestCase):
     def test_logout_url_path_is_correct(self):
         url = reverse('accounts:logout_view')
         self.assertEqual(url, '/accounts/logout/')
+
+    def test_register_url_path_is_correct(self):
+        url = reverse('accounts:register_view')
+        self.assertEqual(url, '/accounts/register/')

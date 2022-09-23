@@ -32,3 +32,8 @@ def login_auth_view(request):
 def logout_view(request):
     logout(request)
     return redirect(reverse('accounts:login_view'))
+
+
+def register_view(request):
+    form = 
+    return render(request, 'accounts/register.html')

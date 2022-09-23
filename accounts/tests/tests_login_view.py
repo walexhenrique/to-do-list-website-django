@@ -30,7 +30,7 @@ class LoginViewTest(TestCase):
 
         self.assertEqual(func_view.func, views.login_view)
 
-    def test_view_login_load_form_in_content(self):
+    def test_view_login_load_form_in_context(self):
         url = reverse('accounts:login_view')
         response = self.client.get(url)
 
