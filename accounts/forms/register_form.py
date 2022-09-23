@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 class RegisterForm(forms.ModelForm):
 
     username = forms.CharField(
-        label='USERNAME',
+        label='NOME DE USUARIO',
         error_messages= {
             'required': 'Error, username is required',
             'max_length': 'USERNAME is very long',

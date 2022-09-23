@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 
 from accounts.forms.login_form import LoginForm
+from accounts.forms.register_form import RegisterForm
 
 
 # Create your views here.
@@ -35,5 +36,25 @@ def logout_view(request):
 
 
 def register_view(request):
-    form = 
-    return render(request, 'accounts/register.html')
+    register_data = request.session.get('register_form_data')
+
+    form = RegisterForm(register_data)
+    return render(request, 'accounts/register.html', {'form': form})
+
+def register_create_view(request):
+    if request.method != 'POST':
+        raise Http404()
+
+    POST = request.POST
+    request.session['register_form_data'] = POST
+
+    form = RegisterForm(POST)
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
+
+        del(request.session['register_form_data'])
+        return redirect(reverse('accounts:login_view'))
+    
+    return redirect('accounts:register_view')

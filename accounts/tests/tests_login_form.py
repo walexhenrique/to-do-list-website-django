@@ -23,5 +23,5 @@ class LoginTestForm(SimpleTestCase):
             'password':'password'
         })
 
-        self.assertEqual(form['username'].field.label, 'USERNAME')
+        self.assertEqual(form['username'].field.label, 'NOME DE USUARIO')
         self.assertEqual(form['password'].field.label, 'SENHA')
