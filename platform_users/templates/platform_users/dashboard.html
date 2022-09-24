@@ -57,13 +57,13 @@
                 {% endif %}
             </div>
             <div class="limit">
+                <p>LIMITE POR PAGINA:</p>
                 {% for quantity in quantity_per_page %}
                     {% if quantity == limit %}
                         <span>{{quantity}}</span>
                     {% else %}
                         <a href="{% url 'platform_users:dashboard_view' %}?limit={{quantity}}">{{ quantity }}</a>
                     {% endif %}
-                    
                 {% endfor %}
             </div>
         </div>

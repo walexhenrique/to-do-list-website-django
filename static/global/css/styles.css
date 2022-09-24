@@ -265,3 +265,25 @@ th, td{
     background: #447a38;
     box-shadow: .5rem .5rem var(--color-primary);
 }
+
+/*Pagination dashboard*/
+
+.content-options {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    font-size: 2rem;
+    align-content: flex-end;
+}
+
+.content-options a, span {
+    text-decoration: none;
+    color: var(--color-red);
+    border: 1px solid black;
+    padding: 1rem;
+    display: inline-block;
+}
+.content-options a,span:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
