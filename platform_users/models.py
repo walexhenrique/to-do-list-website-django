@@ -9,6 +9,9 @@ class Task(models.Model):
     is_published = models.BooleanField(default=False)
     is_finished = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
+
+    def __str__(self):
+        return self.title
 

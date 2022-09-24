@@ -22,8 +22,6 @@ html {
     --color-update: #FEE3EC;
 }
 
-
-
 header {
     background: var(--color-red);
 }

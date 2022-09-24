@@ -1,0 +1,48 @@
+{% extends 'global/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+{% block 'content' %}
+<section>
+    <div class="container">
+        <header class="header-title-dashboard">
+            <h1>USUARIO: {{ request.user.first_name }}</h1>
+            <h2><a href="#">Adicionar Tarefa</a></h2>
+        </header>
+    
+        <div class="tasks">
+            <table class="public-tasks">
+                <thead>
+                    <tr>
+                        <th>Titulo da tarefa</th>
+                        <th>Data e hora criada</th>
+                        <th>Data e hora atualizada</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.created_at }}</td>
+                        <td>{{ task.updated_at }}</td>
+                        <td>
+                            <div class="perfil-user update-task">
+                                <a href="#">Editar</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="perfil-user delete-task">
+                                <a href="#">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock 'content' %}

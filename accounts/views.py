@@ -11,6 +11,9 @@ from accounts.forms.register_form import RegisterForm
 
 # Create your views here.
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect(reverse('platform_users:dashboard_view'))
+        
     form = LoginForm()
     return render(request, 'accounts/login.html', {'form':form})
 
@@ -25,10 +28,10 @@ def login_auth_view(request):
 
     if user:
         login(request, user)
-        return redirect(reverse('accounts:login_view'))
+        return redirect(reverse('platform_users:dashboard_view'))
 
     
-    return HttpResponse('not logged')
+    return redirect(reverse('accounts:login_view'))
 
 def logout_view(request):
     logout(request)
@@ -36,6 +39,9 @@ def logout_view(request):
 
 
 def register_view(request):
+    if request.user.is_authenticated:
+        return redirect(reverse('platform_users:dashboard_view'))
+
     register_data = request.session.get('register_form_data')
 
     form = RegisterForm(register_data)
@@ -57,4 +63,4 @@ def register_create_view(request):
         del(request.session['register_form_data'])
         return redirect(reverse('accounts:login_view'))
     
-    return redirect('accounts:register_view')
+    return redirect(reverse('accounts:register_view'))

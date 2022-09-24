@@ -40,7 +40,7 @@ class LoginViewTest(TestCase):
         url = reverse('accounts:login_auth_view')
         User.objects.create_user(username='jumento', password='jumento2.0')
         response = self.client.post(url, data={'username':'jumento', 'password': 'jumento2.0'}, follow=True)
-        self.assertRedirects(response, '/accounts/login/')
+        self.assertRedirects(response, '/users/dashboard/')
 
     def test_view_login_returns_404_if_request_method_is_not_POST(self):
         url = reverse('accounts:login_auth_view')
@@ -50,7 +50,7 @@ class LoginViewTest(TestCase):
     def test_view_login_checks_if_authentication_fail_case_data_not_exists_in_bd(self):
         url = reverse('accounts:login_auth_view')
         response = self.client.post(url, data={'username': 'jumento', 'password': 'jumento2.0'}, follow=True)
-        self.assertContains(response, 'not logged')
+        self.assertRedirects(response, '/accounts/login/')
 
     def test_view_login_redirect_user_not_logged_in_system(self):
         #TODO
