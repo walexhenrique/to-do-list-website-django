@@ -1,105 +1,59 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends 'global/base.html' %}
+{% load static %}
+{% block 'content' %}
+<section>
+    <div class="container">
+        <header class="header-title">
+            <h1>NOVAS TAREFAS PUBLICADAS</h1>
+        </header>
+    
+    <div class="tasks">
+        <table class="public-tasks">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Titulo da tarefa</th>
+                    <th>Data e hora</th>
+                    <th>Visualizar perfil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>RAIMUNDO</td>
+                    <td>FAZER CHURROS</td>
+                    <td>22-10-2022 19:00:20</td>
+                    <td>
+                        <div class="perfil-user">
+                            <a href="#">PERFIL</a>
+                        </div>
+                    </td>
+                </tr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-</head>
+                <tr>
+                    <td>RAIMUNDO</td>
+                    <td>FAZER CHURROS</td>
+                    <td>22-10-2022 19:00:20</td>
+                    <td>
+                        <div class="perfil-user">
+                            <a href="#">PERFIL</a>
+                        </div>
+                    </td>
+                </tr>
 
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <ul class="content-ul">
-                    <div class="division">
-                        <li class="li-item"><a href="#">TASKS</a>
-                        </li>
-                        <li class="li-item"><a href="#">TASKS</a></li>
-                    </div>
-                    <div class="division">
-                        <li class="li-item"><a href="#">Logar</a></li>
-                        <li class="li-item"><a href="#">Cadastrar</a></li>
-                    </div>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                <tr>
+                    <td>RAIMUNDO</td>
+                    <td>FAZER CHURROS</td>
+                    <td>22-10-2022 19:00:20</td>
+                    <td>
+                        <div class="perfil-user">
+                            <a href="#">PERFIL</a>
+                        </div>
+                    </td>
+                </tr>
 
-    <section>
-        <div class="container">
-            <header class="header-title">
-                <h1>NOVAS TAREFAS PUBLICADAS</h1>
-            </header>
-        
-        <div class="tasks">
-            <table class="public-tasks">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Titulo da tarefa</th>
-                        <th>Data e hora</th>
-                        <th>Visualizar perfil</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>RAIMUNDO</td>
-                        <td>FAZER CHURROS</td>
-                        <td>22-10-2022 19:00:20</td>
-                        <td>
-                            <div class="perfil-user">
-                                <a href="#">PERFIL</a>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>RAIMUNDO</td>
-                        <td>FAZER CHURROS</td>
-                        <td>22-10-2022 19:00:20</td>
-                        <td>
-                            <div class="perfil-user">
-                                <a href="#">PERFIL</a>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>RAIMUNDO</td>
-                        <td>FAZER CHURROS</td>
-                        <td>22-10-2022 19:00:20</td>
-                        <td>
-                            <div class="perfil-user">
-                                <a href="#">PERFIL</a>
-                            </div>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h1>Feito por <a href="#">Walex Henrique</a></h1>
-            </div>
-
-
-        </div>
-    </footer>
-
-</body>
-
-</html>
+</div>
+</section>
+{% endblock 'content' %}

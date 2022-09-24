@@ -1,75 +1,30 @@
+{% extends 'global/base.html' %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar</title>
-    <link rel="stylesheet" href="{% static 'accounts/css/styles.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-</head>
-
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <ul class="content-ul">
-                    <div class="division">
-                        <li class="li-item"><a href="#">TASKS</a>
-                        </li>
-                        <li class="li-item"><a href="#">TASKS</a></li>
+{% block 'title' %}Registrar{% endblock 'title' %}
+{% block 'content' %}
+<section>
+    <div class="container">
+        <div class="form-container">
+            <div class="img-content">
+                <img src="{% static 'accounts/img/auth.svg' %}" alt="To do list">
+            </div>
+            <div class="form-content">
+                <h2>REGISTRAR</h2>
+                <form action="{% url 'accounts:register_create_view' %}" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="inputs">
+                        <label for="{{field.id_for_label}}">{{field.label}}</label>
+                        {{field}}
                     </div>
-                    <div class="division">
-                        <li class="li-item"><a href="#">Logar</a></li>
-                        <li class="li-item"><a href="#">Cadastrar</a></li>
+                    
+                    {% endfor %}
+                    <div class="inputs">
+                        <button type="submit">REGISTRAR</button>
                     </div>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section>
-        <div class="container">
-            <div class="form-container">
-                <div class="img-content">
-                    <img src="{% static 'accounts/img/auth.svg' %}" alt="To do list">
-                </div>
-                <div class="form-content">
-                    <h2>REGISTRAR</h2>
-                    <form action="{% url 'accounts:register_create_view' %}" method="post">
-                        {% csrf_token %}
-                        {% for field in form %}
-                        <div class="inputs">
-                            <label for="{{field.id_for_label}}">{{field.label}}</label>
-                            {{field}}
-                        </div>
-                        
-                        {% endfor %}
-                        <div class="inputs">
-                            <button type="submit">REGISTRAR</button>
-                        </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h1>Feito por <a href="#">Walex Henrique</a></h1>
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+    </div>
+</section>
+{% endblock 'content' %}
