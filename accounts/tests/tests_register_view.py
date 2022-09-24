@@ -66,3 +66,13 @@ class RegisterViewTest(TestCase):
         user = User.objects.filter(username=form_data['username']).exists()
 
         self.assertFalse(user)
+    
+    def test_view_register_redirect_if_user_alredy_authenticated(self):
+        url = reverse('accounts:register_view')
+        User.objects.create_user(username='cabral', password='123456')
+        
+        self.client.login(username='cabral', password='123456')
+        response = self.client.get(url)
+        
+        redirect_url = reverse('platform_users:dashboard_view')
+        self.assertRedirects(response, redirect_url)

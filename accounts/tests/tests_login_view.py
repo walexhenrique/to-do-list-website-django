@@ -52,6 +52,14 @@ class LoginViewTest(TestCase):
         response = self.client.post(url, data={'username': 'jumento', 'password': 'jumento2.0'}, follow=True)
         self.assertRedirects(response, '/accounts/login/')
 
-    def test_view_login_redirect_user_not_logged_in_system(self):
-        #TODO
-        ...
+    def test_view_login_redirect_if_user_alredy_authenticated(self):
+        url = reverse('accounts:login_view')
+        User.objects.create_user(username='cabral', password='123456')
+        
+        self.client.login(username='cabral', password='123456')
+        response = self.client.get(url)
+        
+        redirect_url = reverse('platform_users:dashboard_view')
+        self.assertRedirects(response, redirect_url)
+
+        
