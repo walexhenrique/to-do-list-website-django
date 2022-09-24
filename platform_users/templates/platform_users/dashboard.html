@@ -39,10 +39,36 @@
                         </td>
                     </tr>
                     {% endfor %}
-                    
                 </tbody>
             </table>
         </div>
+        <div class="content-options">
+            <div class="pagination">
+                {% if tasks.paginator.num_pages > 1 %}
+                    {% if tasks.has_previous %}
+                        <a href="{% url 'platform_users:dashboard_view' %}?limit={{ tasks.paginator.per_page }}&page={{ tasks.previous_page_number }}">{{ tasks.previous_page_number }}</a>
+                    {% endif %}
+
+                    <span>{{ tasks.number }}</span>
+
+                    {% if tasks.has_next %}
+                        <a href="{% url 'platform_users:dashboard_view' %}?limit={{ tasks.paginator.per_page }}&page={{ tasks.next_page_number }}"> {{tasks.next_page_number }}</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="limit">
+                {% for quantity in quantity_per_page %}
+                    {% if quantity == limit %}
+                        <span>{{quantity}}</span>
+                    {% else %}
+                        <a href="{% url 'platform_users:dashboard_view' %}?limit={{quantity}}">{{ quantity }}</a>
+                    {% endif %}
+                    
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </section>
+
+
 {% endblock 'content' %}
