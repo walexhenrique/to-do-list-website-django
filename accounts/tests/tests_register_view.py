@@ -47,7 +47,7 @@ class RegisterViewTest(TestCase):
 
         self.assertTrue(user)
         
-    def test_view_register_create_redirect_to_register_if_invalid_user_created(self):
+    def test_view_register_create_redirect_to_register_if_invalid_form(self):
         url = reverse('accounts:register_create_view')
         form_data = {
             'username': 'jorge',
@@ -62,7 +62,7 @@ class RegisterViewTest(TestCase):
         redirect_url = reverse('accounts:register_view')
         self.assertRedirects(response, redirect_url)
 
-        # User can't created
+        # User doesn't created
         user = User.objects.filter(username=form_data['username']).exists()
 
         self.assertFalse(user)

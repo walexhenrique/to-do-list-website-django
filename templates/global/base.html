@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    {% include 'global/partials/head.html'%}
+    <title>{% block 'title' %}{{ title }}{% endblock 'title' %} | Tarefas</title>
+</head>
+
+<body>
+    {% include 'global/partials/header.html' %}
+
+    {% block 'content' %}{% endblock 'content' %}
+
+    {% include 'global/partials/footer.html' %}
+
+</body>
+
+</html>
