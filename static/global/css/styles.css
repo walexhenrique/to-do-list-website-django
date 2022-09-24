@@ -158,6 +158,10 @@ footer {
     cursor: pointer;
 }
 
+.inputs textarea {
+    padding: 1rem;
+}
+
 /* index */
 .header-title {
     background: none;

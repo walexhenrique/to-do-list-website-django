@@ -29,12 +29,12 @@
                         <td>{{ task.updated_at }}</td>
                         <td>
                             <div class="perfil-user update-task">
-                                <a href="#">Editar</a>
+                                <a href="{% url 'platform_users:update_view' task.id %}">Editar</a>
                             </div>
                         </td>
                         <td>
                             <div class="perfil-user delete-task">
-                                <a href="#">Apagar</a>
+                                <a href="{% url 'platform_users:delete_view' task.id %}">Apagar</a>
                             </div>
                         </td>
                     </tr>

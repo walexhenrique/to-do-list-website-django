@@ -15,15 +15,18 @@ class TaskForm(forms.ModelForm):
     )
     desc = forms.CharField(
         label='DESCRICAO',
-        widget=forms.Textarea()
+        widget=forms.Textarea(),
+        required=False,
     )
 
     is_published = forms.BooleanField(
         label='TAREFA PUBLICA',
+        required=False,
     )
 
     is_finished = forms.BooleanField(
         label='TAREFA FINALIZADA',
+        required=False,
     )
 
     class Meta:

@@ -1,0 +1,32 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block 'title' %}Atualizar{% endblock 'title' %}
+
+{% block 'content' %}
+<section>
+    <div class="container">
+        <div class="form-container">
+            <div class="img-content">
+                <img src="{% static 'platform_users/img/edit.svg' %}" alt="update form">
+            </div>
+            <div class="form-content">
+                <h2>ATUALIZAR TAREFA</h2>
+                <form action="{% url 'platform_users:update_create_view' id=id %}" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="inputs">
+                        <label for="{{field.id_for_label}}">{{field.label}}</label>
+                        {{field}}
+                    </div>
+                    
+                    {% endfor %}
+                    <div class="inputs">
+                        <button type="submit">ATUALIZAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock 'content' %}

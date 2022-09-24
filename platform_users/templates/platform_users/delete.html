@@ -1,0 +1,17 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block 'title' %}Apagar{% endblock 'title' %}
+{% block 'content' %}
+<section>
+    <div class="container">
+        <h2>Você tem certeza que quer excluir essa tarefa?</h2>
+        <p>Titulo da tarefa: {{task.title}}</p>
+        <a href="{% url 'platform_users:dashboard_view' %}">CANCELAR</a>
+        <form action="{% url 'platform_users:delete_confirm_view' id=task.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">APAGAR</button>
+        </form>
+    </div>
+</section>
+{% endblock 'content' %}
