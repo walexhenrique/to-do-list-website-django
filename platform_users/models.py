@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class Task(models.Model):
     title = models.CharField(max_length=30)
-    desc = models.TextField(verbose_name='Description')
+    desc = models.TextField(verbose_name='Description', blank=True)
     is_published = models.BooleanField(default=False)
     is_finished = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
