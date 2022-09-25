@@ -36,7 +36,7 @@ def dashboard(request):
 
 @login_required(login_url='accounts:login_view')
 def update_view(request, id):
-    task = get_object_or_404(Task, id=id)
+    task = get_object_or_404(Task, id=id, user=request.user)
 
     data = {
         'title': task.title,
@@ -64,11 +64,14 @@ def update_create_view(request, id):
 
 @login_required(login_url='accounts:login_view')
 def delete_view(request, id):
-    task = Task.objects.get(id=id)
+    task = get_object_or_404(Task, id=id, user=request.user)
     return render(request, 'platform_users/delete.html', {'task':task})
 
 @login_required(login_url='accounts:login_view')
 def delete_confirm_view(request, id):
+    if request.method != 'POST':
+        raise Http404()
+
     task = Task.objects.get(id=id)
     task.delete()
     return redirect(reverse('platform_users:dashboard_view'))
@@ -83,6 +86,7 @@ def register_task_view(request):
 def register_task_create(request):
     if request.method != 'POST':
         raise Http404()
+
     POST = request.POST
     request.session['register_task_create'] = POST
     
@@ -94,5 +98,5 @@ def register_task_create(request):
         del(request.session['register_task_create'])
         return redirect(reverse('platform_users:dashboard_view'))
     
-    return redirect(reverse('register_task_view'))
+    return redirect(reverse('platform_users:register_task_view'))
     
