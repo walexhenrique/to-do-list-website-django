@@ -3,13 +3,19 @@
         <nav>
             <ul class="content-ul">
                 <div class="division">
-                    <li class="li-item"><a href="#">TASKS</a>
+                    <li class="li-item"><a href="{% url 'home:home' %}">TAREFAS</a>
                     </li>
-                    <li class="li-item"><a href="#">TASKS</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="li-item"><a href="{% url 'platform_users:dashboard_view' %}">PAINEL</a></li>
+                    {% endif %}
                 </div>
                 <div class="division">
-                    <li class="li-item"><a href="#">Logar</a></li>
-                    <li class="li-item"><a href="#">Cadastrar</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="li-item"><a href="{% url 'accounts:logout_view' %}">SAIR</a></li>
+                    {% else %}
+                    <li class="li-item"><a href="{% url 'accounts:login_view' %}">Logar</a></li>
+                    <li class="li-item"><a href="{% url 'accounts:register_view' %}">Cadastrar</a></li>
+                    {% endif %}
                 </div>
             </ul>
         </nav>
