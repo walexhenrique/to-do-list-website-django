@@ -72,3 +72,27 @@ def delete_confirm_view(request, id):
     task = Task.objects.get(id=id)
     task.delete()
     return redirect(reverse('platform_users:dashboard_view'))
+
+@login_required(login_url='accounts:login_view')
+def register_task_view(request):
+    data = request.session.get('register_task_create')
+    form = TaskForm(data)
+    return render(request, 'platform_users/register_task.html', {'form':form})
+
+@login_required(login_url='accounts:login_view')
+def register_task_create(request):
+    if request.method != 'POST':
+        raise Http404()
+    POST = request.POST
+    request.session['register_task_create'] = POST
+    
+    form = TaskForm(POST)
+    if form.is_valid():
+        form_with_user = form.save(commit=False)
+        form_with_user.user = request.user
+        form_with_user.save()
+        del(request.session['register_task_create'])
+        return redirect(reverse('platform_users:dashboard_view'))
+    
+    return redirect(reverse('register_task_view'))
+    

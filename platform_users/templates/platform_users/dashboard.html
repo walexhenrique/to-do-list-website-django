@@ -7,7 +7,7 @@
     <div class="container">
         <header class="header-title-dashboard">
             <h1>USUARIO: {{ request.user.first_name }}</h1>
-            <h2><a href="#">Adicionar Tarefa</a></h2>
+            <h2><a href="{% url 'platform_users:register_task_view' %}">Adicionar Tarefa</a></h2>
         </header>
     
         <div class="tasks">
